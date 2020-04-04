@@ -1,58 +1,60 @@
-import React, { useState } from "react";
-import Choices from "../Choices/Choices";
-import verbs from "../data/verbs.json";
-import Message from "../Message/Message";
-import { getRandomVerb } from "../utils";
+import React, { useState, useEffect } from "react";
+import GuestPast from "../GuestPast/GuestPast";
+import { randNumber } from "../utils";
+import GuestFr from "../GuestFr/GuestFr";
 
-interface IRandomVerb {
+interface IRandomVerbProps {
   score: number;
   setScore: React.Dispatch<React.SetStateAction<number>>;
   resetScore: () => void;
 }
 
-function RandomVerb({ score, setScore, resetScore }: IRandomVerb) {
-  const [messageStatus, setMessageStatus] = useState<
-    "truth" | "wrong" | "ignore"
-  >("ignore");
-  const [verb, setVerb] = useState(verbs[getRandomVerb()]);
+/* <GuestPast
+score={score}
+setScore={setScore}
+resetScore={resetScore}
+setReload={setReload}
+/>,
+<GuestFr
+score={score}
+setScore={setScore}
+resetScore={resetScore}
+setReload={setReload}
+/>, */
 
-  const truth = (trigger: boolean) => {
-    setMessageStatus("truth");
-    if (!trigger) {
-        setScore((s) => s + 1);
+function RandomVerb({ score, setScore, resetScore }: IRandomVerbProps) {
+  const [reload, setReload] = useState(false);
+  const [elements, setElements] = useState<JSX.Element[]>([
+    <GuestPast
+      score={score}
+      setScore={setScore}
+      resetScore={resetScore}
+      setReload={setReload}
+    />,
+  ]);
+
+  const [render, setRender] = useState<JSX.Element>(
+    elements[randNumber(elements.length)]
+  );
+
+  useEffect(() => {
+    if (reload) {
+      setElements([
+        <GuestFr
+          score={score}
+          setScore={setScore}
+          resetScore={resetScore}
+          setReload={setReload}
+        />,
+      ]);
     }
-  };
+  }, [setElements, score, reload, resetScore, setScore]);
 
-  const wrong = () => {
-    setMessageStatus("wrong");
-    resetScore();
-  };
+  useEffect(() => {
+    setRender(elements[randNumber(elements.length)]);
+  }, [elements, setRender])
 
-  const next = () => {
-    setMessageStatus("ignore");
-    setVerb(verbs[getRandomVerb()]);
-
-    console.log("reset found ");
-  };
-
-  const title = (
-    <span>
-      Trouver la forme <strong>passé</strong>
-    </span>
-  );
-
-  return (
-    <div className="content">
-      <h2>{verb.base}</h2>
-      <Message title={title} status={messageStatus} next={next} />
-      <Choices
-        verbResponse={verb}
-        handleTruth={truth}
-        handleWrong={wrong}
-        score={score}
-      />
-    </div>
-  );
+  return render;
 }
 
 export default RandomVerb;

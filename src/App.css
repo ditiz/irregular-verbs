@@ -65,13 +65,14 @@ main {
 
 .choice {
     user-select: none;
-    font-size: calc(2.5vmin);
-    height: 3rem;
+    font-size: calc(10px + 1.5vmin);
+    min-height: 3rem;
     background: none;
     color: white;
     border: none;
     width: 10rem;
     margin: 1rem;
+    padding: 1rem;
     cursor: pointer;
 
     border-radius: 50px;
