@@ -80,7 +80,7 @@ main {
 }
 
 .choice:hover {
-    border: 1px solid white;
+    background: rgb(34, 36, 38);;
 }
 
 .message {

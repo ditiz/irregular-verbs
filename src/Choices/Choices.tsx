@@ -6,8 +6,8 @@ import { getRandomVerb } from '../utils';
 
 interface IChoices {
     verbResponse: IVerb;
-    handleTruth: () => void;
-    handleWrong: () => void;
+    handleTruth: (trigger: boolean) => void;
+    handleWrong: (trigger: boolean) => void;
     score: number;
 }
 function Choices({ verbResponse, handleTruth, handleWrong, score }: IChoices) {
