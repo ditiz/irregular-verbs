@@ -31,6 +31,12 @@ function RandomVerb({ score, setScore, resetScore }: IRandomVerbProps) {
       resetScore={resetScore}
       setReload={setReload}
     />,
+    <GuestFr
+      score={score}
+      setScore={setScore}
+      resetScore={resetScore}
+      setReload={setReload}
+    />,
   ]);
 
   const [render, setRender] = useState<JSX.Element>(
@@ -40,6 +46,12 @@ function RandomVerb({ score, setScore, resetScore }: IRandomVerbProps) {
   useEffect(() => {
     if (reload) {
       setElements([
+        <GuestPast
+          score={score}
+          setScore={setScore}
+          resetScore={resetScore}
+          setReload={setReload}
+        />,
         <GuestFr
           score={score}
           setScore={setScore}
@@ -52,7 +64,7 @@ function RandomVerb({ score, setScore, resetScore }: IRandomVerbProps) {
 
   useEffect(() => {
     setRender(elements[randNumber(elements.length)]);
-  }, [elements, setRender])
+  }, [elements, setRender]);
 
   return render;
 }
