@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import Choices from '../Choices/Choices';
 import verbs from '../data/verbs.json';
 import Message from '../Message/Message';
@@ -7,25 +7,37 @@ import { getRandomVerb } from '../utils';
 interface IRandomVerb {
     score: number;
     setScore: React.Dispatch<React.SetStateAction<number>>;
+    resetScore: () => void;
 }
 
-function RandomVerb({ score, setScore }: IRandomVerb) {
+function RandomVerb({ score, setScore, resetScore }: IRandomVerb) {
     const [messageStatus, setMessageStatus] = useState<'truth' | 'wrong' | 'ignore'>('ignore');
     const [verb, setVerb] = useState(verbs[getRandomVerb()]);
+    const [found, setFound] = useState(false);
 
-    const truth = useCallback(() => {
-        setScore((score) => score + 1);
+    const truth = () => {
         setMessageStatus('truth');
-    }, [setScore]);
 
-    const wrong = useCallback(() => {
-        setMessageStatus('wrong');
-        setScore(0);
-    }, []);
+        if (!found) {
+            setScore((s) => s + 1);
+            console.log(found);
+            setFound(true);
+        }
+    };
+
+    const wrong = () => {
+        if (!found) {
+            console.log(found);
+
+            setMessageStatus('wrong');
+            resetScore();
+        }
+    };
 
     const next = () => {
         setMessageStatus('ignore');
         setVerb(verbs[getRandomVerb()]);
+        setFound(false);
     };
 
     const title = (

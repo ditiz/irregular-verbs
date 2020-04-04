@@ -34,7 +34,7 @@ function Choices({ verbResponse, handleTruth, handleWrong, score }: IChoices) {
             }
 
             setRandChoices(
-                choices.sort((a, b) => {
+                choices.sort(() => {
                     return 0.5 - Math.random();
                 }),
             );

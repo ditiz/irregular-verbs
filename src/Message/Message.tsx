@@ -14,9 +14,7 @@ function Message({ status, title, next }: IMessage) {
                 <div className="truth">
                     <div></div>
                     Bonne response
-                    <button onClick={next}>
-                        <FaAngleRight />
-                    </button>
+                    <FaAngleRight className="next" onClick={next} />
                 </div>
             </div>
         );
