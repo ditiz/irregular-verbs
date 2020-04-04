@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaAngleRight } from 'react-icons/fa';
 
 interface IMessage {
     status: 'truth' | 'wrong' | 'ignore';
@@ -13,7 +14,9 @@ function Message({ status, title, next }: IMessage) {
                 <div className="truth">
                     <div></div>
                     Bonne response
-                    <button onClick={next}>→</button>
+                    <button onClick={next}>
+                        <FaAngleRight />
+                    </button>
                 </div>
             </div>
         );
