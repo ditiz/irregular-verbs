@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import verbs from '../data/verbs.json';
-import Message from '../Message/Message';
-import { getRandomVerb, initHint, randNumber } from '../utils';
+import React, { useEffect, useRef, useState } from "react";
+import verbs from "../data/verbs.json";
+import Message from "../Message/Message";
+import { getRandomVerb, initHint, randNumber } from "../utils";
 
 interface IWritePast {
     setScore: React.Dispatch<React.SetStateAction<number>>;
@@ -11,9 +11,12 @@ interface IWritePast {
 
 function WritePast({ setScore, resetScore, setReload }: IWritePast) {
     const [verb, setVerb] = useState(verbs[getRandomVerb()]);
-    const [messageStatus, setMessageStatus] = useState<'truth' | 'wrong' | 'ignore'>('ignore');
-    const [inputValue, setInputValue] = useState('');
+    const [messageStatus, setMessageStatus] = useState<
+        "truth" | "wrong" | "ignore"
+    >("ignore");
+    const [inputValue, setInputValue] = useState("");
     const [hint, setHint] = useState<string>(initHint(verb.past));
+    const [trigger, setTrigger] = useState<boolean>(false);
 
     const refInput = useRef<HTMLInputElement>(null);
 
@@ -28,15 +31,16 @@ function WritePast({ setScore, resetScore, setReload }: IWritePast) {
     }, [verb]);
 
     const truth = (trigger: boolean) => {
-        setMessageStatus('truth');
+        setMessageStatus("truth");
 
         if (!trigger) {
             setScore((s) => s + 1);
+            setTrigger(true);
         }
     };
 
     const wrong = () => {
-        setMessageStatus('wrong');
+        setMessageStatus("wrong");
         resetScore();
 
         setHint((h) => {
@@ -47,9 +51,11 @@ function WritePast({ setScore, resetScore, setReload }: IWritePast) {
             let index = randNumber(h.length);
 
             if (verb.past.length !== verbs.length) {
-                return h.substr(0, index) + verb.past[index] + h.substr(index + 1);
+                return (
+                    h.substr(0, index) + verb.past[index] + h.substr(index + 1)
+                );
             }
-            while (h[index] !== '-') {
+            while (h[index] !== "-") {
                 index = randNumber(h.length);
             }
 
@@ -59,11 +65,11 @@ function WritePast({ setScore, resetScore, setReload }: IWritePast) {
 
     const next = () => {
         const newVerb = verbs[getRandomVerb()];
-        setMessageStatus('ignore');
+        setMessageStatus("ignore");
         setVerb(newVerb);
         setReload(true);
         setHint(initHint(verb.past));
-        setInputValue('');
+        setInputValue("");
     };
 
     const title = (
@@ -72,13 +78,14 @@ function WritePast({ setScore, resetScore, setReload }: IWritePast) {
         </span>
     );
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+        setInputValue(e.target.value);
 
     const check = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const value = inputValue.trim().toLowerCase();
-        if (value === verb.participle) {
-            truth(true);
+        if (value === verb.past) {
+            truth(trigger);
         } else {
             wrong();
         }
@@ -92,7 +99,13 @@ function WritePast({ setScore, resetScore, setReload }: IWritePast) {
                 <small>indice:</small> {hint}
             </div>
             <form onSubmit={check} className="response">
-                <input type="text" autoFocus ref={refInput} value={inputValue} onChange={handleChange} />
+                <input
+                    type="text"
+                    autoFocus
+                    ref={refInput}
+                    value={inputValue}
+                    onChange={handleChange}
+                />
                 <input type="submit" value="Valider" />
             </form>
         </div>

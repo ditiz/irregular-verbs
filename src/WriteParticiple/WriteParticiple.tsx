@@ -20,6 +20,7 @@ function WriteParticiple({
   >("ignore");
   const [inputValue, setInputValue] = useState("");
   const [hint, setHint] = useState<string>(initHint(verb.participle));
+  const [trigger, setTrigger] = useState<boolean>(false);
 
   const refInput = useRef<HTMLInputElement>(null);
 
@@ -38,6 +39,7 @@ function WriteParticiple({
 
     if (!trigger) {
       setScore((s) => s + 1);
+      setTrigger(false)
     }
   };
 
@@ -85,7 +87,7 @@ function WriteParticiple({
     e.preventDefault();
     const value = inputValue.trim().toLowerCase();
     if (value === verb.participle) {
-      truth(true);
+      truth(trigger);
     } else {
       wrong();
     }
