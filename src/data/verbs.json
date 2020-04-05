@@ -14,8 +14,8 @@
     {
         "base": "bear",
         "past": "bore",
-        "participle": "borne/born",
-        "fr": "supporter/porter/naître"
+        "participle": "borne / born",
+        "fr": "supporter / porter / naître"
     },
     {
         "base": "beat",
@@ -188,7 +188,7 @@
     {
         "base": "dive",
         "past": "dived",
-        "participle": "dived/dove(USA)",
+        "participle": "dived / dove(USA)",
         "fr": "plonger"
     },
     {
@@ -339,7 +339,7 @@
         "base": "grind",
         "past": "ground",
         "participle": "ground",
-        "fr": "moudre/broyer"
+        "fr": "moudre / broyer"
     },
     {
         "base": "grow",
@@ -553,20 +553,20 @@
     },
     {
         "base": "plead",
-        "past": "pleaded/pled",
-        "participle": "pleaded/pled",
-        "fr": "supplier/plaider"
+        "past": "pleaded / pled",
+        "participle": "pleaded / pled",
+        "fr": "supplier / plaider"
     },
     {
         "base": "proofread",
         "past": "proofread",
         "participle": "proofread",
-        "fr": "relire/corriger les fautes d’un texte"
+        "fr": "relire / corriger les fautes d’un texte"
     },
     {
         "base": "prove",
         "past": "proved",
-        "participle": "proved/proven",
+        "participle": "proved / proven",
         "fr": "prouver"
     },
     {
@@ -681,7 +681,7 @@
         "base": "shed",
         "past": "shed",
         "participle": "shed",
-        "fr": "to shed light: mettre en lumière/to shed blood: verser du sang"
+        "fr": "mettre en lumière / verser du sang"
     },
     {
         "base": "shine",
@@ -693,7 +693,7 @@
         "base": "shoot",
         "past": "shot",
         "participle": "shot",
-        "fr": "tirer/tuer par balle/filmer (tourner un film)"
+        "fr": "tirer / tuer par balle / filmer (tourner un film)"
     },
     {
         "base": "show",
@@ -759,7 +759,7 @@
         "base": "smell",
         "past": "smelt",
         "participle": "smelt",
-        "fr": "sentir (odorat)/flairer"
+        "fr": "sentir (odorat) / flairer"
     },
     {
         "base": "sow",
