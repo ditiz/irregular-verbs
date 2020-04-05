@@ -18,9 +18,14 @@ function WritePast({ setScore, resetScore, setReload }: IWritePast) {
     const refInput = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        setHint(initHint(verb.past));
+        if (verb.past !== hint) {
+            setHint(initHint(verb.past));
+        }
+    }, [verb, messageStatus, inputValue]);
+
+    useEffect(() => {
         refInput.current?.focus();
-    }, [setHint, verb]);
+    }, [verb]);
 
     const truth = (trigger: boolean) => {
         setMessageStatus('truth');
@@ -41,6 +46,9 @@ function WritePast({ setScore, resetScore, setReload }: IWritePast) {
 
             let index = randNumber(h.length);
 
+            if (verb.past.length !== verbs.length) {
+                return h.substr(0, index) + verb.past[index] + h.substr(index + 1);
+            }
             while (h[index] !== '-') {
                 index = randNumber(h.length);
             }

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import verbs from '../data/verbs.json';
 import Message from '../Message/Message';
 import { getRandomVerb, initHint, randNumber } from '../utils';
@@ -15,7 +15,17 @@ function WriteParticiple({ setScore, resetScore, setReload }: IWriteParticiple) 
     const [inputValue, setInputValue] = useState('');
     const [hint, setHint] = useState<string>(initHint(verb.participle));
 
-    const refInput = useRef(null);
+    const refInput = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (verb.past !== hint) {
+            setHint(initHint(verb.past));
+        }
+    }, [verb, messageStatus, inputValue]);
+
+    useEffect(() => {
+        refInput.current?.focus();
+    }, [verb]);
 
     const truth = (trigger: boolean) => {
         setMessageStatus('truth');
@@ -36,6 +46,9 @@ function WriteParticiple({ setScore, resetScore, setReload }: IWriteParticiple) 
 
             let index = randNumber(h.length);
 
+            if (verb.past.length !== verbs.length) {
+                return h.substr(0, index) + verb.past[index] + h.substr(index + 1);
+            }
             while (h[index] !== '-') {
                 index = randNumber(h.length);
             }
