@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import verbs from "../data/verbs.json";
 import Message from "../Message/Message";
 import { getRandomVerb, randNumber, initHint } from "../utils";
@@ -17,7 +17,12 @@ function WritePast({ setScore, resetScore, setReload }: IWritePast) {
   const [inputValue, setInputValue] = useState("");
   const [hint, setHint] = useState<string>(initHint(verb.past));
 
-  const refInput = useRef(null);
+  const refInput = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setHint(initHint(verb.past));
+    refInput.current?.focus();
+  }, [setHint, verb]);
 
   const truth = (trigger: boolean) => {
     setMessageStatus("truth");
@@ -32,7 +37,6 @@ function WritePast({ setScore, resetScore, setReload }: IWritePast) {
     resetScore();
 
     setHint((h) => {
-      console.log(h, verb.past);
       if (h === verb.past) {
         return h;
       }
@@ -40,7 +44,6 @@ function WritePast({ setScore, resetScore, setReload }: IWritePast) {
       let index = randNumber(h.length);
 
       while (h[index] !== "-") {
-        console.log("recherche");
         index = randNumber(h.length);
       }
 

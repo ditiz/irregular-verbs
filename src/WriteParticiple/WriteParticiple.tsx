@@ -36,7 +36,6 @@ function WriteParticiple({
     resetScore();
 
     setHint((h) => {
-      console.log(h, verb.participle);
       if (h === verb.participle) {
         return h;
       }
@@ -44,7 +43,6 @@ function WriteParticiple({
       let index = randNumber(h.length);
 
       while (h[index] !== "-") {
-        console.log("recherche");
         index = randNumber(h.length);
       }
 
