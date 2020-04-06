@@ -9,9 +9,7 @@ function App() {
   const resetScore = () => setScore(0);
 
   useEffect(() => {
-    if (maxScore < score) {
       setMaxScore(max => (max < score ? score : max));
-    }
   }, [score, setMaxScore])
 
   return (
