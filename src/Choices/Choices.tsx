@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Choice from "../Choice/Choice";
 import verbs from "../data/verbs.json";
 import { IVerb, VerbAttribute } from "../types";
@@ -11,6 +11,11 @@ interface IChoices {
     score: number;
     use: VerbAttribute;
 }
+
+interface ITrigger {
+    [x: number]: boolean;
+}
+
 function Choices({
     verbResponse,
     handleTruth,
@@ -18,20 +23,47 @@ function Choices({
     score,
     use,
 }: IChoices) {
+    const nbChoices = 3;
     const [randChoices, setRandChoices] = useState<JSX.Element[]>([]);
+    const [triggers, setTriggers] = useState<ITrigger>({
+        ...[...Array(nbChoices)].map(() => false),
+    });
     const [verb, setVerb] = useState<IVerb>();
+
+    const divRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        divRef.current?.focus();
+    }, [divRef, verbResponse]);
 
     useEffect(() => {
         if (verbResponse !== verb) {
+            const _handleTruth = (trigger: boolean) => {
+                setTriggers({
+                    ...[...Array(nbChoices)].map(() => false),
+                });
+                handleTruth(trigger);
+            };
+
+            const _handleWrong = (trigger: boolean) => {
+                setTriggers({
+                    ...[...Array(nbChoices)].map(() => false),
+                });
+                handleWrong(trigger);
+            };
+
             const rand = () => verbs[getRandomVerb()];
 
-            const choices = [
+            const choices: JSX.Element[] = [];
+
+            choices.push(
                 <Choice
                     key={0}
                     response={verbResponse[use]}
-                    handleClick={handleTruth}
-                />,
-            ];
+                    handleClick={_handleTruth}
+                    keyTrigger={triggers[choices.length]}
+                />
+            );
 
             const localVerbs = [verbResponse];
 
@@ -47,22 +79,66 @@ function Choices({
                     <Choice
                         key={choices.length}
                         response={fake[use]}
-                        handleClick={handleWrong}
+                        handleClick={_handleWrong}
+                        keyTrigger={triggers[choices.length]}
                     />
                 );
             }
 
-            setRandChoices(
-                choices.sort(() => {
-                    return 0.5 - Math.random();
-                })
-            );
+            setRandChoices(choices.sort(() => 0.5 - Math.random()));
 
             setVerb(verbResponse);
+        } else {
+            setRandChoices((choices) =>
+                choices.map((choice, i) => {
+                    return {
+                        ...choice,
+                        props: {
+                            ...choice.props,
+                            keyTrigger: triggers[i],
+                        },
+                    };
+                })
+            );
         }
-    }, [verbResponse, handleTruth, handleWrong, score, verb, setVerb, use]);
+    }, [
+        verbResponse,
+        score,
+        verb,
+        setVerb,
+        use,
+        triggers,
+        handleTruth,
+        handleWrong,
+    ]);
 
-    return <div className="choices">{randChoices}</div>;
+    const handleOnKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        switch (e.key) {
+            case "1":
+            case "&":
+                setTriggers((ts) => ({ 0: true, 1: false, 2: false }));
+                break;
+            case "2":
+            case "é":
+                setTriggers((ts) => ({ 0: false, 1: true, 2: false }));
+                break;
+            case "3":
+            case '"':
+                setTriggers((ts) => ({ 0: false, 1: false, 2: true }));
+                break;
+        }
+    };
+
+    return (
+        <div
+            className="choices"
+            tabIndex={0}
+            ref={divRef}
+            onKeyDown={handleOnKeyDown}
+        >
+            {randChoices}
+        </div>
+    );
 }
 
 export default Choices;
