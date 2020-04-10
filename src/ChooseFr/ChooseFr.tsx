@@ -1,6 +1,7 @@
-import React from 'react';
-import Choose from '../Choose/Choose';
-import { VerbAttribute } from '../types';
+import React from "react";
+import Choose from "../Choose/Choose";
+import { VerbAttribute } from "../types";
+import FrIndicator from "../Indicators/FrIndicator";
 
 interface IChooseFr {
     score: number;
@@ -13,6 +14,7 @@ function ChooseFr({ score, setScore, resetScore, setReload }: IChooseFr) {
     const title = (
         <span>
             Trouver la <strong>traduction</strong>
+            <FrIndicator />
         </span>
     );
 

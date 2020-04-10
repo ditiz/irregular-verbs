@@ -1,6 +1,7 @@
-import React from 'react';
-import Choose from '../Choose/Choose';
-import { VerbAttribute } from '../types';
+import React from "react";
+import Choose from "../Choose/Choose";
+import { VerbAttribute } from "../types";
+import ParticipleIndicator from "../Indicators/ParticipleIndicator";
 
 interface IChooseParticiple {
     score: number;
@@ -9,10 +10,16 @@ interface IChooseParticiple {
     setReload: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function ChooseParticiple({ score, setScore, resetScore, setReload }: IChooseParticiple) {
+function ChooseParticiple({
+    score,
+    setScore,
+    resetScore,
+    setReload,
+}: IChooseParticiple) {
     const title = (
         <span>
             Trouver la forme <strong>participe passé</strong>
+            <ParticipleIndicator />
         </span>
     );
 

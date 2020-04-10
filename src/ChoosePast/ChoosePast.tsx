@@ -1,6 +1,7 @@
-import React from 'react';
-import Choose from '../Choose/Choose';
-import { VerbAttribute } from '../types';
+import React from "react";
+import Choose from "../Choose/Choose";
+import { VerbAttribute } from "../types";
+import PastIndicator from "../Indicators/PastIndicator";
 
 interface IChoosePast {
     score: number;
@@ -13,6 +14,7 @@ function ChoosePast({ score, setScore, resetScore, setReload }: IChoosePast) {
     const title = (
         <span>
             Trouver la forme <strong>prétérit (passé)</strong>
+            <PastIndicator />
         </span>
     );
 

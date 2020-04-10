@@ -32,7 +32,6 @@ function Write({ setScore, resetScore, setReload, use, title }: IWrite) {
             return h;
         });
     }, [verb, messageStatus, inputValue, use]);
-    
 
     useEffect(() => {
         refInput.current?.focus();

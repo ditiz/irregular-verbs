@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 interface IChoice {
     response: string;
@@ -9,12 +9,12 @@ function Choice({ response, handleClick }: IChoice) {
 
     useEffect(() => {
         setTrigger(false);
-    }, [response, setTrigger])
+    }, [response, setTrigger]);
 
     const _handleClick = () => {
-        handleClick(trigger)
-        setTrigger(true)
-    }
+        handleClick(trigger);
+        setTrigger(true);
+    };
     return (
         <button className="choice" onClick={_handleClick}>
             {response}

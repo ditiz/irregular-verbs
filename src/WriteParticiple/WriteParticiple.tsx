@@ -1,6 +1,7 @@
-import React from 'react';
-import { VerbAttribute } from '../types';
-import Write from '../Write/Write';
+import React from "react";
+import { VerbAttribute } from "../types";
+import Write from "../Write/Write";
+import ParticipleIndicator from "../Indicators/ParticipleIndicator";
 
 interface IWriteParticiple {
     setScore: React.Dispatch<React.SetStateAction<number>>;
@@ -8,16 +9,29 @@ interface IWriteParticiple {
     setReload: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function WriteParticiple({ setScore, resetScore, setReload }: IWriteParticiple) {
+function WriteParticiple({
+    setScore,
+    resetScore,
+    setReload,
+}: IWriteParticiple) {
     const use = VerbAttribute.participle;
 
     const title = (
         <span>
             Trouver la forme <strong>participe passé</strong>
+            <ParticipleIndicator />
         </span>
     );
 
-    return <Write setScore={setScore} resetScore={resetScore} setReload={setReload} use={use} title={title} />;
+    return (
+        <Write
+            setScore={setScore}
+            resetScore={resetScore}
+            setReload={setReload}
+            use={use}
+            title={title}
+        />
+    );
 }
 
 export default WriteParticiple;
