@@ -6,9 +6,9 @@ const PastIndicator = () => {
     };
 
     return (
-        <div className="indicator-wrapper">
-            <span className="indicator" style={style}></span>
-        </div>
+        <span className="indicator-wrapper">
+            <span className="indicator" style={style} />
+        </span>
     );
 };
 
