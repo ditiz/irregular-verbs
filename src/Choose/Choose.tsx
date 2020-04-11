@@ -26,6 +26,7 @@ function Choose({
         "truth" | "wrong" | "ignore"
     >("ignore");
     const [verb, setVerb] = useState(verbs[getRandomVerb()]);
+    const [triggerNext, setTriggerNext] = useState(false);
 
     const truth = (trigger: boolean) => {
         setMessageStatus("truth");
@@ -40,9 +41,10 @@ function Choose({
     };
 
     const next = () => {
+        setTriggerNext(true);
+        setReload(true);
         setMessageStatus("ignore");
         setVerb(verbs[getRandomVerb()]);
-        setReload(true);
     };
 
     return (
@@ -55,6 +57,8 @@ function Choose({
                 handleWrong={wrong}
                 score={score}
                 use={use}
+                triggerNext={triggerNext}
+                setTriggerNext={setTriggerNext}
             />
         </div>
     );

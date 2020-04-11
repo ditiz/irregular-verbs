@@ -16,16 +16,17 @@ function Choice({ response, handleClick, keyTrigger }: IChoice) {
 
     useEffect(() => {
         setTrigger(false);
+        setClassName("");
     }, [response, setTrigger]);
 
     useEffect(() => {
         if (keyTrigger) {
-            setClassName("choice-active");
+            setClassName("choice-active")
             _handleClick();
         } else {
-            setClassName("");
+            setClassName("")
         }
-    }, [keyTrigger, _handleClick, trigger]);
+    }, [keyTrigger, _handleClick]);
 
     return (
         <button className={`choice ${className}`} onClick={_handleClick}>

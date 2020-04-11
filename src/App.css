@@ -92,6 +92,10 @@ main {
     background: rgb(102, 126, 234);
 }
 
+.choice:active {
+    background: rgb(75, 103, 231);
+}
+
 .message {
     flex: 2;
     height: 10rem;

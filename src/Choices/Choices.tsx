@@ -10,6 +10,8 @@ interface IChoices {
     handleWrong: (trigger: boolean) => void;
     score: number;
     use: VerbAttribute;
+    triggerNext: boolean;
+    setTriggerNext: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface ITrigger {
@@ -22,12 +24,15 @@ function Choices({
     handleWrong,
     score,
     use,
+    triggerNext,
+    setTriggerNext,
 }: IChoices) {
     const nbChoices = 3;
     const [randChoices, setRandChoices] = useState<JSX.Element[]>([]);
     const [triggers, setTriggers] = useState<ITrigger>({
         ...[...Array(nbChoices)].map(() => false),
     });
+    const [reloadTriggers, setReloadTriggers] = useState<boolean>(false);
     const [verb, setVerb] = useState<IVerb>();
 
     const divRef = useRef<HTMLDivElement>(null);
@@ -37,18 +42,20 @@ function Choices({
     }, [divRef, verbResponse]);
 
     useEffect(() => {
-        if (verbResponse !== verb) {
+        setTriggers({
+            ...[...Array(nbChoices)].map(() => false),
+        });
+        setReloadTriggers(true);
+        setTriggerNext(false);
+    }, [triggerNext, setTriggers, setTriggerNext, setReloadTriggers]);
+
+    useEffect(() => {
+        if (verbResponse !== verb && !triggerNext) {
             const _handleTruth = (trigger: boolean) => {
-                setTriggers({
-                    ...[...Array(nbChoices)].map(() => false),
-                });
                 handleTruth(trigger);
             };
 
             const _handleWrong = (trigger: boolean) => {
-                setTriggers({
-                    ...[...Array(nbChoices)].map(() => false),
-                });
                 handleWrong(trigger);
             };
 
@@ -88,7 +95,7 @@ function Choices({
             setRandChoices(choices.sort(() => 0.5 - Math.random()));
 
             setVerb(verbResponse);
-        } else {
+        } else if (reloadTriggers) {
             setRandChoices((choices) =>
                 choices.map((choice, i) => {
                     return {
@@ -100,6 +107,8 @@ function Choices({
                     };
                 })
             );
+
+            setReloadTriggers(false);
         }
     }, [
         verbResponse,
@@ -108,6 +117,9 @@ function Choices({
         setVerb,
         use,
         triggers,
+        triggerNext,
+        reloadTriggers,
+        setReloadTriggers,
         handleTruth,
         handleWrong,
     ]);
@@ -117,14 +129,17 @@ function Choices({
             case "1":
             case "&":
                 setTriggers((ts) => ({ 0: true, 1: false, 2: false }));
+                setReloadTriggers(true);
                 break;
             case "2":
             case "é":
                 setTriggers((ts) => ({ 0: false, 1: true, 2: false }));
+                setReloadTriggers(true);
                 break;
             case "3":
             case '"':
                 setTriggers((ts) => ({ 0: false, 1: false, 2: true }));
+                setReloadTriggers(true);
                 break;
         }
     };
