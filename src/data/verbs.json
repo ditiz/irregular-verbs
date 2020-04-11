@@ -14,7 +14,7 @@
     {
         "base": "bear",
         "past": "bore",
-        "participle": "borne / born",
+        "participle": "borne",
         "fr": "supporter / porter / naître"
     },
     {
@@ -188,7 +188,7 @@
     {
         "base": "dive",
         "past": "dived",
-        "participle": "dived / dove(USA)",
+        "participle": "dived",
         "fr": "plonger"
     },
     {
@@ -553,8 +553,8 @@
     },
     {
         "base": "plead",
-        "past": "pleaded / pled",
-        "participle": "pleaded / pled",
+        "past": "pleaded",
+        "participle": "pleaded",
         "fr": "supplier / plaider"
     },
     {
@@ -566,7 +566,7 @@
     {
         "base": "prove",
         "past": "proved",
-        "participle": "proved / proven",
+        "participle": "proved",
         "fr": "prouver"
     },
     {
