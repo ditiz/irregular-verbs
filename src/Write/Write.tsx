@@ -95,7 +95,12 @@ function Write({ setScore, resetScore, setReload, use, title }: IWrite) {
     return (
         <div className="content">
             <h2>{verb.base}</h2>
-            <Message title={title} status={messageStatus} next={next} />
+            <Message
+                title={title}
+                status={messageStatus}
+                next={next}
+                verb={verb}
+            />
             <div className="hint">
                 <small>indice:</small> {hint}
             </div>

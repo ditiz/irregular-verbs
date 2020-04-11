@@ -50,7 +50,12 @@ function Choose({
     return (
         <div className="content">
             <h2>{verb.base}</h2>
-            <Message title={title} status={messageStatus} next={next} />
+            <Message
+                title={title}
+                status={messageStatus}
+                next={next}
+                verb={verb}
+            />
             <Choices
                 verbResponse={verb}
                 handleTruth={truth}
