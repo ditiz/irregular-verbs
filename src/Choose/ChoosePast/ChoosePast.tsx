@@ -1,7 +1,7 @@
 import React from "react";
-import Choose from "../Choose/Choose";
-import { VerbAttribute } from "../types";
-import PastIndicator from "../Indicators/PastIndicator";
+import Choose from "../Choose";
+import { VerbAttribute } from "../../types";
+import PastIndicator from "../../Indicators/PastIndicator";
 
 interface IChoosePast {
     score: number;

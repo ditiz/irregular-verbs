@@ -1,21 +1,21 @@
 import React from "react";
-import Choose from "../Choose/Choose";
-import { VerbAttribute } from "../types";
-import ParticipleIndicator from "../Indicators/ParticipleIndicator";
+import { VerbAttribute } from "../../types";
+import Write from "../Write";
+import ParticipleIndicator from "../../Indicators/ParticipleIndicator";
 
-interface IChooseParticiple {
-    score: number;
+interface IWriteParticiple {
     setScore: React.Dispatch<React.SetStateAction<number>>;
     resetScore: () => void;
     setReload: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function ChooseParticiple({
-    score,
+function WriteParticiple({
     setScore,
     resetScore,
     setReload,
-}: IChooseParticiple) {
+}: IWriteParticiple) {
+    const use = VerbAttribute.participle;
+
     const title = (
         <span>
             Trouver la forme <strong>participe passé</strong>
@@ -23,11 +23,8 @@ function ChooseParticiple({
         </span>
     );
 
-    const use = VerbAttribute.participle;
-
     return (
-        <Choose
-            score={score}
+        <Write
             setScore={setScore}
             resetScore={resetScore}
             setReload={setReload}
@@ -37,4 +34,4 @@ function ChooseParticiple({
     );
 }
 
-export default ChooseParticiple;
+export default WriteParticiple;

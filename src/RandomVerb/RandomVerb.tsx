@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import GuestFr from "../ChooseFr/ChooseFr";
-import GuestParticiple from "../ChooseParticiple/ChooseParticiple";
-import GuestPast from "../ChoosePast/ChoosePast";
+import ChooseFr from "../Choose/ChooseFr/ChooseFr";
+import ChooseParticiple from "../Choose/ChooseParticiple/ChooseParticiple";
+import ChoosePast from "../Choose/ChoosePast/ChoosePast";
 import { randNumber } from "../utils";
-import WriteParticiple from "../WriteParticiple/WriteParticiple";
-import WritePast from "../WritePast/WritePast";
+import WriteParticiple from "../Write/WriteParticiple/WriteParticiple";
+import WritePast from "../Write/WritePast/WritePast";
 
 interface IRandomVerbProps {
     score: number;
@@ -15,19 +15,19 @@ interface IRandomVerbProps {
 function RandomVerb({ score, setScore, resetScore }: IRandomVerbProps) {
     const [reload, setReload] = useState(false);
     const [elements] = useState<JSX.Element[]>([
-        <GuestPast
+        <ChoosePast
             score={score}
             setScore={setScore}
             resetScore={resetScore}
             setReload={setReload}
         />,
-        <GuestParticiple
+        <ChooseParticiple
             score={score}
             setScore={setScore}
             resetScore={resetScore}
             setReload={setReload}
         />,
-        <GuestFr
+        <ChooseFr
             score={score}
             setScore={setScore}
             resetScore={resetScore}

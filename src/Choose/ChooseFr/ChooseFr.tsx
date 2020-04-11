@@ -1,7 +1,7 @@
 import React from "react";
-import Choose from "../Choose/Choose";
-import { VerbAttribute } from "../types";
-import FrIndicator from "../Indicators/FrIndicator";
+import Choose from "../Choose";
+import { VerbAttribute } from "../../types";
+import FrIndicator from "../../Indicators/FrIndicator";
 
 interface IChooseFr {
     score: number;

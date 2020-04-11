@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import Choice from "../Choice/Choice";
+import Choice from "./Choice/Choice";
 import verbs from "../data/verbs.json";
 import { IVerb, VerbAttribute } from "../types";
 import { getRandomVerb } from "../utils";

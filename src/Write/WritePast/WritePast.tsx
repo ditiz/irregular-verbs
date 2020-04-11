@@ -1,7 +1,7 @@
 import React from "react";
-import { VerbAttribute } from "../types";
-import Write from "../Write/Write";
-import PastIndicator from "../Indicators/PastIndicator";
+import { VerbAttribute } from "../../types";
+import Write from "../Write";
+import PastIndicator from "../../Indicators/PastIndicator";
 
 interface IWritePast {
     setScore: React.Dispatch<React.SetStateAction<number>>;
