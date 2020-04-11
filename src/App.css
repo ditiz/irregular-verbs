@@ -98,7 +98,6 @@ main {
 
 .message {
     flex: 2;
-    min-height: 25rem;
     min-width: 30rem;
     display: flex;
     flex-direction: column;
@@ -146,7 +145,6 @@ main {
 }
 
 .truth {
-    min-height: 5rem;
     width: 30rem;
 
     display: flex;
