@@ -118,7 +118,7 @@ main {
 }
 
 .message-response {
-    margin: 1rem 0;
+    margin: 0 0 2rem 0;
     font-size: calc(10px + 1vmin);
     display: flex;
     flex-flow: column nowrap;
@@ -126,7 +126,13 @@ main {
     font-weight: 200;
 }
 
+.message-response div {
+    display: flex;
+    flex-flow: row;
+}
+
 .message-response span {
+    margin-left: 3px;
     font-weight: 500;
 }
 
