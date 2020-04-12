@@ -26,7 +26,7 @@ function Message({ status, title, next, verb }: IMessage) {
                                 Prétérit: <span>{verb.past}</span>
                             </div>
                             <div>
-                                Participe passée: <span>{verb.participle}</span>
+                                Participe passé: <span>{verb.participle}</span>
                             </div>
                             <div>
                                 Traduction: <span>{verb.fr}</span>

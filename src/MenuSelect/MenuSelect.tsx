@@ -89,7 +89,7 @@ const MenuSelect = ({ score, setScore, resetScore }: IMenuSelectProps) => {
             },
             {
                 id: "ChooseParticiple",
-                name: "Choix participe passée",
+                name: "Choix participe passé",
                 use: true,
             },
             {
