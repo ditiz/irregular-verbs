@@ -285,7 +285,7 @@ main {
     display: flex;
     flex-flow: column;
     justify-content: space-around;
-    min-width: 30rem;
+    min-width: 35rem;
 }
 
 .multiple-choices {
