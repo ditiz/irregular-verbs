@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import RandomVerb from "./RandomVerb/RandomVerb";
+import MenuSelect from "./MenuSelect/MenuSelect";
 
 function App() {
     const [score, setScore] = useState<number>(0);
@@ -20,7 +20,7 @@ function App() {
                 <small>Meilleur Score: {maxScore} </small>
             </header>
             <main>
-                <RandomVerb
+                <MenuSelect
                     score={score}
                     setScore={setScore}
                     resetScore={resetScore}

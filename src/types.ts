@@ -1,13 +1,19 @@
 export interface IVerb {
-  base: string;
-  past: string;
-  participle: string;
-  fr: string;
+    base: string;
+    past: string;
+    participle: string;
+    fr: string;
 }
 
 export enum VerbAttribute {
-  "base" = "base",
-  "past" = "past",
-  "participle" = "participle",
-  "fr" = "fr",
+    "base" = "base",
+    "past" = "past",
+    "participle" = "participle",
+    "fr" = "fr",
+}
+
+export interface ITypeQuizz {
+    id: string;
+    name: string;
+    use: boolean;
 }
