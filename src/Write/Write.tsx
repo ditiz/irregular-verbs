@@ -31,7 +31,7 @@ function Write({ setScore, resetScore, setReload, use, title }: IWrite) {
             }
             return h;
         });
-    }, [verb, messageStatus, inputValue, use]);
+    }, [verb, use]);
 
     useEffect(() => {
         refInput.current?.focus();
@@ -56,17 +56,20 @@ function Write({ setScore, resetScore, setReload, use, title }: IWrite) {
             }
 
             let index = randNumber(h.length);
+            let result = h
 
             if (verb[use].length !== verbs.length) {
-                return (
-                    h.substr(0, index) + verb[use][index] + h.substr(index + 1)
-                );
-            }
-            while (h[index] !== "-") {
-                index = randNumber(h.length);
+                result =
+                    h.substr(0, index) + verb[use][index] + h.substr(index + 1);
             }
 
-            return h.substr(0, index) + verb[use][index] + h.substr(index + 1);
+            while (h[index] !== "-") {
+                index = randNumber(h.length);
+                result =
+                    h.substr(0, index) + verb[use][index] + h.substr(index + 1);
+            }
+
+            return result;
         });
     };
 
