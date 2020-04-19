@@ -8,19 +8,20 @@ interface ISelectVerbs {
 }
 
 const SelectVerbs = ({ activeVerbs, setActiveVerbs }: ISelectVerbs) => {
+    const [verbsList] = useState<IVerb[]>(Verbs)
     const [endVerb, setEndVerbs] = useState(activeVerbs.pop()?.base);
     const [message, setMessage] = useState<string | null>();
 
     const handleAction = (verb: IVerb) => {
         let newEndVerb = verb.base;
-        let newActiveVerbs = Verbs.filter((v) => !!v)
+        let newActiveVerbs = verbsList.filter((v) => !!v)
             .filter((v) => v.base.localeCompare(verb.base) <= 0)
             .map((a) => a);
 
         // Minimum 10 verbs
         if (newActiveVerbs.length < 10) {
-            newEndVerb = Verbs[10].base;
-            newActiveVerbs = Verbs.slice(0, 10);
+            newEndVerb = verbsList[10].base;
+            newActiveVerbs = verbsList.slice(0, 10);
             setMessage("Minimum 10 verbes");
         } else {
             setMessage(null);
@@ -33,7 +34,7 @@ const SelectVerbs = ({ activeVerbs, setActiveVerbs }: ISelectVerbs) => {
         <div>
             {message && <div style={{ marginBottom: "2rem" }}>{message}</div>}
             <div className="verbs-list">
-                {Verbs.map((verb) => (
+                {verbsList.map((verb) => (
                     <DisplayVerb
                         key={verb.base}
                         verb={verb}

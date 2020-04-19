@@ -22,17 +22,14 @@ const SelectTypeQuizz = ({
     };
 
     return (
-        <div className="menu">
-            <div className="multiple-choices">
-                {typesQuizz.map((typeQuizz) => (
-                    <QuizzType
-                        key={typeQuizz.id}
-                        typeQuizz={typeQuizz}
-                        handleQuizzSelection={_handleQuizzSelection}
-                    />
-                ))}
-            </div>
-           
+        <div className="multiple-choices">
+            {typesQuizz.map((typeQuizz) => (
+                <QuizzType
+                    key={typeQuizz.id}
+                    typeQuizz={typeQuizz}
+                    handleQuizzSelection={_handleQuizzSelection}
+                />
+            ))}
         </div>
     );
 };

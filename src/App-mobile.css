@@ -1,0 +1,39 @@
+@media screen and (max-width: 640px) {
+    .App-header {
+        width: 100vw;
+    }
+
+    .menu {
+        display: flex;
+        flex-flow: column;
+        justify-content: start;
+    }
+
+    .menu-items {
+        margin-top: auto;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        max-height: none;
+    }
+
+    .multiple-choices {
+        width: 80vw;
+    }
+
+    .verbs-list {
+        width: 80vw;
+        flex: 1;
+    }
+
+    .go-menu {
+        position: relative;
+        left: 0;
+    }
+
+    .choices {
+        display: flex;
+        flex-flow: column;
+        
+    }
+}

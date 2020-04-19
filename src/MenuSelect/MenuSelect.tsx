@@ -142,7 +142,6 @@ const MenuSelect = ({ score, setScore, resetScore }: IMenuSelectProps) => {
                     return e;
                 }
             });
-        console.log(activeVerbs);
 
         setElements(tq as JSX.Element[]);
     }, [activeVerbs, typesQuizz, quizz]);
@@ -164,7 +163,7 @@ const MenuSelect = ({ score, setScore, resetScore }: IMenuSelectProps) => {
     };
 
     return (
-        <>
+        <div className="menu">
             <div className="menu-items">
                 <SelectTypeQuizz
                     typesQuizz={typesQuizz}
@@ -179,7 +178,7 @@ const MenuSelect = ({ score, setScore, resetScore }: IMenuSelectProps) => {
             <button onClick={_handleClick} className="button-menu">
                 Passer au test
             </button>
-        </>
+        </div>
     );
 };
 

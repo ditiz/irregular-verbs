@@ -285,6 +285,7 @@ main {
     display: flex;
     flex-flow: column;
     justify-content: space-around;
+    align-items: center;
     min-width: 35rem;
 }
 
@@ -311,6 +312,10 @@ main {
     align-items: center;
 }
 
+.multiple-choice span:first-child {
+    margin-right: 1rem;
+}
+
 .multiple-choice:first-child {
     border-radius: 50px 50px 0 0;
 }
@@ -325,7 +330,7 @@ main {
 .menu-items {
     margin-top: 5rem;
     display: flex;
-    flex-flow: row no wrap;
+    flex-flow: row nowrap;
     justify-content: space-around;
     max-height: 70vh;
     width: 100vw;
