@@ -4,20 +4,14 @@ import { ITypeQuizz } from "../../types";
 import { sortQuizz } from "../../utils";
 
 interface ISelectTypeQuizzProps {
-    setShowVerb: React.Dispatch<React.SetStateAction<boolean>>;
     typesQuizz: ITypeQuizz[];
     setTypesQuizz: React.Dispatch<React.SetStateAction<ITypeQuizz[]>>;
 }
 
 const SelectTypeQuizz = ({
-    setShowVerb,
     typesQuizz,
     setTypesQuizz,
 }: ISelectTypeQuizzProps) => {
-    const _handleClick = () => {
-        setShowVerb((s) => !s);
-    };
-
     const _handleQuizzSelection = (typeQuizz: ITypeQuizz) => {
         setTypesQuizz((tqs) =>
             [
@@ -38,9 +32,7 @@ const SelectTypeQuizz = ({
                     />
                 ))}
             </div>
-            <button onClick={_handleClick} className="button-menu">
-                Passer au test
-            </button>
+           
         </div>
     );
 };

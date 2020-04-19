@@ -1,16 +1,23 @@
 import React from "react";
 import Choose from "../Choose";
-import { VerbAttribute } from "../../types";
+import { VerbAttribute, IVerb } from "../../types";
 import PastIndicator from "../../Indicators/PastIndicator";
 
 interface IChoosePast {
+    activeVerbs: IVerb[];
     score: number;
     setScore: React.Dispatch<React.SetStateAction<number>>;
     resetScore: () => void;
     setReload: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function ChoosePast({ score, setScore, resetScore, setReload }: IChoosePast) {
+function ChoosePast({
+    activeVerbs,
+    score,
+    setScore,
+    resetScore,
+    setReload,
+}: IChoosePast) {
     const title = (
         <span>
             Trouver la forme <strong>prétérit (passé)</strong>
@@ -22,6 +29,7 @@ function ChoosePast({ score, setScore, resetScore, setReload }: IChoosePast) {
 
     return (
         <Choose
+            activeVerbs={activeVerbs}
             score={score}
             setScore={setScore}
             resetScore={resetScore}

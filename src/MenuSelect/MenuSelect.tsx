@@ -6,8 +6,10 @@ import ChooseParticiple from "../Choose/ChooseParticiple/ChooseParticiple";
 import ChoosePast from "../Choose/ChoosePast/ChoosePast";
 import WriteParticiple from "../Write/WriteParticiple/WriteParticiple";
 import WritePast from "../Write/WritePast/WritePast";
-import { ITypeQuizz } from "../types";
+import { ITypeQuizz, IVerb } from "../types";
 import { sortQuizz } from "../utils";
+import Verbs from "../data/verbs.json";
+import SelectVerbs from "./SelectVerbs/SelectVerbs";
 
 interface IMenuSelectProps {
     score: number;
@@ -24,11 +26,14 @@ const MenuSelect = ({ score, setScore, resetScore }: IMenuSelectProps) => {
     const [showVerb, setShowVerb] = useState<boolean>(false);
     const [reload, setReload] = useState(false);
 
+    const [activeVerbs, setActiveVerbs] = useState<IVerb[]>(Verbs);
+
     const [quizz] = useState<IQuizzElement[]>([
         {
             id: "ChoosePast",
             element: (
                 <ChoosePast
+                    activeVerbs={activeVerbs}
                     score={score}
                     setScore={setScore}
                     resetScore={resetScore}
@@ -40,6 +45,7 @@ const MenuSelect = ({ score, setScore, resetScore }: IMenuSelectProps) => {
             id: "ChooseParticiple",
             element: (
                 <ChooseParticiple
+                    activeVerbs={activeVerbs}
                     score={score}
                     setScore={setScore}
                     resetScore={resetScore}
@@ -51,6 +57,7 @@ const MenuSelect = ({ score, setScore, resetScore }: IMenuSelectProps) => {
             id: "ChooseFr",
             element: (
                 <ChooseFr
+                    activeVerbs={activeVerbs}
                     score={score}
                     setScore={setScore}
                     resetScore={resetScore}
@@ -62,6 +69,7 @@ const MenuSelect = ({ score, setScore, resetScore }: IMenuSelectProps) => {
             id: "WritePast",
             element: (
                 <WritePast
+                    activeVerbs={activeVerbs}
                     setScore={setScore}
                     resetScore={resetScore}
                     setReload={setReload}
@@ -72,6 +80,7 @@ const MenuSelect = ({ score, setScore, resetScore }: IMenuSelectProps) => {
             id: "WriteParticiple",
             element: (
                 <WriteParticiple
+                    activeVerbs={activeVerbs}
                     setScore={setScore}
                     resetScore={resetScore}
                     setReload={setReload}
@@ -118,10 +127,25 @@ const MenuSelect = ({ score, setScore, resetScore }: IMenuSelectProps) => {
         const tq: (JSX.Element | undefined)[] = typesQuizz
             .filter((tq) => tq.use)
             .map((tq) => quizz.find((q) => q.id === tq.id)?.element)
-            .filter((e) => e);
+            .filter((e) => e)
+            .map((e) => {
+                // update activeVerbs for quizz
+                if (e) {
+                    return {
+                        ...e,
+                        props: {
+                            ...e.props,
+                            activeVerbs,
+                        },
+                    };
+                } else {
+                    return e;
+                }
+            });
+        console.log(activeVerbs);
 
         setElements(tq as JSX.Element[]);
-    }, [typesQuizz, quizz]);
+    }, [activeVerbs, typesQuizz, quizz]);
 
     if (showVerb) {
         return (
@@ -135,12 +159,27 @@ const MenuSelect = ({ score, setScore, resetScore }: IMenuSelectProps) => {
         );
     }
 
+    const _handleClick = () => {
+        setShowVerb((s) => !s);
+    };
+
     return (
-        <SelectTypeQuizz
-            setShowVerb={setShowVerb}
-            typesQuizz={typesQuizz}
-            setTypesQuizz={setTypesQuizz}
-        />
+        <>
+            <div className="menu-items">
+                <SelectTypeQuizz
+                    typesQuizz={typesQuizz}
+                    setTypesQuizz={setTypesQuizz}
+                />
+
+                <SelectVerbs
+                    activeVerbs={activeVerbs}
+                    setActiveVerbs={setActiveVerbs}
+                />
+            </div>
+            <button onClick={_handleClick} className="button-menu">
+                Passer au test
+            </button>
+        </>
     );
 };
 

@@ -1,9 +1,10 @@
 import React from "react";
 import Choose from "../Choose";
-import { VerbAttribute } from "../../types";
+import { VerbAttribute, IVerb } from "../../types";
 import ParticipleIndicator from "../../Indicators/ParticipleIndicator";
 
 interface IChooseParticiple {
+    activeVerbs: IVerb[];
     score: number;
     setScore: React.Dispatch<React.SetStateAction<number>>;
     resetScore: () => void;
@@ -11,6 +12,7 @@ interface IChooseParticiple {
 }
 
 function ChooseParticiple({
+    activeVerbs,
     score,
     setScore,
     resetScore,
@@ -27,6 +29,7 @@ function ChooseParticiple({
 
     return (
         <Choose
+            activeVerbs={activeVerbs}
             score={score}
             setScore={setScore}
             resetScore={resetScore}

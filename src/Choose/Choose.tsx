@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Choices from "../Choices/Choices";
-import verbs from "../data/verbs.json";
 import Message from "../Message/Message";
-import { VerbAttribute } from "../types";
+import { VerbAttribute, IVerb } from "../types";
 import { getRandomVerb } from "../utils";
 
 interface IChoose {
+    activeVerbs: IVerb[];
     score: number;
     setScore: React.Dispatch<React.SetStateAction<number>>;
     resetScore: () => void;
@@ -15,6 +15,7 @@ interface IChoose {
 }
 
 function Choose({
+    activeVerbs,
     score,
     setScore,
     resetScore,
@@ -25,7 +26,7 @@ function Choose({
     const [messageStatus, setMessageStatus] = useState<
         "truth" | "wrong" | "ignore"
     >("ignore");
-    const [verb, setVerb] = useState(verbs[getRandomVerb()]);
+    const [verb, setVerb] = useState(activeVerbs[getRandomVerb(activeVerbs)]);
     const [triggerNext, setTriggerNext] = useState(false);
 
     const truth = (trigger: boolean) => {
@@ -44,7 +45,7 @@ function Choose({
         setTriggerNext(true);
         setReload(true);
         setMessageStatus("ignore");
-        setVerb(verbs[getRandomVerb()]);
+        setVerb(activeVerbs[getRandomVerb(activeVerbs, verb)]);
     };
 
     return (
@@ -57,6 +58,7 @@ function Choose({
                 verb={verb}
             />
             <Choices
+                activeVerbs={activeVerbs}
                 verbResponse={verb}
                 handleTruth={truth}
                 handleWrong={wrong}

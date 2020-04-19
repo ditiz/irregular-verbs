@@ -1,15 +1,21 @@
 import React from "react";
-import { VerbAttribute } from "../../types";
+import { VerbAttribute, IVerb } from "../../types";
 import Write from "../Write";
 import PastIndicator from "../../Indicators/PastIndicator";
 
 interface IWritePast {
+    activeVerbs: IVerb[];
     setScore: React.Dispatch<React.SetStateAction<number>>;
     resetScore: () => void;
     setReload: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function WritePast({ setScore, resetScore, setReload }: IWritePast) {
+function WritePast({
+    activeVerbs,
+    setScore,
+    resetScore,
+    setReload,
+}: IWritePast) {
     const title = (
         <span>
             Trouver la forme <strong>prétérit (passé)</strong>
@@ -21,6 +27,7 @@ function WritePast({ setScore, resetScore, setReload }: IWritePast) {
 
     return (
         <Write
+            activeVerbs={activeVerbs}
             setScore={setScore}
             resetScore={resetScore}
             setReload={setReload}

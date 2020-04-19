@@ -1,15 +1,17 @@
 import React from "react";
-import { VerbAttribute } from "../../types";
+import { VerbAttribute, IVerb } from "../../types";
 import Write from "../Write";
 import ParticipleIndicator from "../../Indicators/ParticipleIndicator";
 
 interface IWriteParticiple {
+    activeVerbs: IVerb[],
     setScore: React.Dispatch<React.SetStateAction<number>>;
     resetScore: () => void;
     setReload: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function WriteParticiple({
+    activeVerbs,
     setScore,
     resetScore,
     setReload,
@@ -25,6 +27,7 @@ function WriteParticiple({
 
     return (
         <Write
+            activeVerbs={activeVerbs}
             setScore={setScore}
             resetScore={resetScore}
             setReload={setReload}

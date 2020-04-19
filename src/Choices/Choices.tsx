@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import Choice from "./Choice/Choice";
-import verbs from "../data/verbs.json";
 import { IVerb, VerbAttribute } from "../types";
 import { getRandomVerb } from "../utils";
 
 interface IChoices {
+    activeVerbs: IVerb[];
     verbResponse: IVerb;
     handleTruth: (trigger: boolean) => void;
     handleWrong: (trigger: boolean) => void;
@@ -19,6 +19,7 @@ interface ITrigger {
 }
 
 function Choices({
+    activeVerbs,
     verbResponse,
     handleTruth,
     handleWrong,
@@ -59,7 +60,7 @@ function Choices({
                 handleWrong(trigger);
             };
 
-            const rand = () => verbs[getRandomVerb()];
+            const rand = () => activeVerbs[getRandomVerb(activeVerbs, verb)];
 
             const choices: JSX.Element[] = [];
 
@@ -114,6 +115,7 @@ function Choices({
         verbResponse,
         score,
         verb,
+        activeVerbs,
         setVerb,
         use,
         triggers,

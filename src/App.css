@@ -321,3 +321,46 @@ main {
 .multiple-choice:hover {
     background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
+
+.menu-items {
+    margin-top: 5rem;
+    display: flex;
+    flex-flow: row no wrap;
+    justify-content: space-around;
+    max-height: 70vh;
+    width: 100vw;
+}
+
+.verbs-list {
+    height: 50vh;
+    overflow-y: scroll;
+
+    border-radius: 50px 10px 10px 50px;
+    background: #222426;
+    box-shadow: 16px 16px 32px #1c1d1f, -16px -16px 32px #282b2d;
+}
+
+.verbs-list::-webkit-scrollbar-track {
+    border-radius: 0 50px 50px 0;
+    background-color: #222426;
+}
+
+.verbs-list::-webkit-scrollbar {
+    width: 12px;
+    border-radius: 0 50px 50px 0;
+    background-color: #222426;
+}
+
+.verbs-list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.verb-item {
+    user-select: none;
+}
+
+.verb-item-active {
+    background: #3a3e41;
+    user-select: none;
+}

@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import verbs from "../data/verbs.json";
 import Message from "../Message/Message";
-import { VerbAttribute } from "../types";
+import { VerbAttribute, IVerb } from "../types";
 import { getRandomVerb, initHint, randNumber } from "../utils";
 
 interface IWrite {
+    activeVerbs: IVerb[];
     setScore: React.Dispatch<React.SetStateAction<number>>;
     resetScore: () => void;
     setReload: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,8 +12,15 @@ interface IWrite {
     title: JSX.Element;
 }
 
-function Write({ setScore, resetScore, setReload, use, title }: IWrite) {
-    const [verb, setVerb] = useState(verbs[getRandomVerb()]);
+function Write({
+    activeVerbs,
+    setScore,
+    resetScore,
+    setReload,
+    use,
+    title,
+}: IWrite) {
+    const [verb, setVerb] = useState(activeVerbs[getRandomVerb(activeVerbs)]);
 
     const [messageStatus, setMessageStatus] = useState<
         "truth" | "wrong" | "ignore"
@@ -56,9 +63,9 @@ function Write({ setScore, resetScore, setReload, use, title }: IWrite) {
             }
 
             let index = randNumber(h.length);
-            let result = h
+            let result = h;
 
-            if (verb[use].length !== verbs.length) {
+            if (verb[use].length !== activeVerbs.length) {
                 result =
                     h.substr(0, index) + verb[use][index] + h.substr(index + 1);
             }
@@ -74,7 +81,7 @@ function Write({ setScore, resetScore, setReload, use, title }: IWrite) {
     };
 
     const next = () => {
-        const newVerb = verbs[getRandomVerb()];
+        const newVerb = activeVerbs[getRandomVerb(activeVerbs, verb)];
         setMessageStatus("ignore");
         setVerb(newVerb);
         setReload(true);
