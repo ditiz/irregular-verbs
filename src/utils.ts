@@ -1,7 +1,7 @@
-import { ITypeQuizz, IVerb } from "./types";
+import Verbs from './data/verbs.js';
+import { ITypeQuiz, IVerb } from './types';
 
-export const randNumber = (length: number) =>
-    Math.floor(Math.random() * Math.floor(length));
+export const randNumber = (length: number) => Math.floor(Math.random() * Math.floor(length));
 
 export const getRandomVerb = (activeVerbs: IVerb[], verb?: IVerb) => {
     let res;
@@ -12,8 +12,8 @@ export const getRandomVerb = (activeVerbs: IVerb[], verb?: IVerb) => {
     return res;
 };
 
-export const initHint = (word: string) =>
-    [...Array(word.length)].reduce((acc) => (acc ? acc + "-" : "-")) + "-";
+export const initHint = (word: string) => [...Array(word.length)].reduce((acc) => (acc ? acc + '-' : '-')) + '-';
 
-export const sortQuizz = (a: ITypeQuizz, b: ITypeQuizz) =>
-    ("" + a.id).localeCompare(b.id);
+export const sortQuiz = (a: ITypeQuiz, b: ITypeQuiz) => ('' + a.id).localeCompare(b.id);
+
+export const getVerbs = () => Verbs;

@@ -218,7 +218,7 @@ main {
     border-radius: 25px;
 }
 
-.response input[type="text"] {
+.response input[type='text'] {
     font-size: calc(10px + 2vmin);
     padding: 0.5rem 1rem;
     border: none;
@@ -229,7 +229,7 @@ main {
     box-shadow: inset -20px 20px 41px #252729, inset 20px -20px 41px #313537;
 }
 
-.response input[type="submit"] {
+.response input[type='submit'] {
     font-size: calc(10px + 2vmin);
     padding: 0.5rem 1rem;
     border: none;
@@ -294,15 +294,13 @@ main {
     flex-flow: column;
     justify-content: space-around;
 
-    margin: 5rem 0;
-
     border-radius: 50px;
     background: #222426;
     box-shadow: 16px 16px 32px #1c1d1f, -16px -16px 32px #282b2d;
 }
 
 .multiple-choice {
-    padding: 1rem 3rem;
+    padding: 1.5rem 3rem;
     cursor: pointer;
     user-select: none;
 
@@ -328,12 +326,17 @@ main {
 }
 
 .menu-items {
-    margin-top: 5rem;
+    margin: 5rem 0;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
     max-height: 70vh;
     width: 100vw;
+}
+
+.menu-items > * {
+    flex: 1;
+    margin: 0 5rem;
 }
 
 .verbs-list {
@@ -368,4 +371,5 @@ main {
 .verb-item-active {
     background: #3a3e41;
     user-select: none;
+    padding: 0.3rem 1rem;
 }

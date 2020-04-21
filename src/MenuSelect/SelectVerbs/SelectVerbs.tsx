@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { IVerb } from "../../types";
-import Verbs from "../../data/verbs.json";
+import React, { useState } from 'react';
+import { IVerb } from '../../types';
+import { getVerbs } from '../../utils';
 
 interface ISelectVerbs {
     activeVerbs: IVerb[];
@@ -8,21 +8,23 @@ interface ISelectVerbs {
 }
 
 const SelectVerbs = ({ activeVerbs, setActiveVerbs }: ISelectVerbs) => {
-    const [verbsList] = useState<IVerb[]>(Verbs)
+    const [verbsList] = useState<IVerb[]>(getVerbs());
     const [endVerb, setEndVerbs] = useState(activeVerbs.pop()?.base);
     const [message, setMessage] = useState<string | null>();
 
     const handleAction = (verb: IVerb) => {
         let newEndVerb = verb.base;
-        let newActiveVerbs = verbsList.filter((v) => !!v)
+        let newActiveVerbs = verbsList
+            .filter((v) => !!v)
             .filter((v) => v.base.localeCompare(verb.base) <= 0)
             .map((a) => a);
 
-        // Minimum 10 verbs
-        if (newActiveVerbs.length < 10) {
-            newEndVerb = verbsList[10].base;
-            newActiveVerbs = verbsList.slice(0, 10);
-            setMessage("Minimum 10 verbes");
+        // Minimum verbs
+        const minimumVerb = 3;
+        if (newActiveVerbs.length < minimumVerb) {
+            newEndVerb = verbsList[minimumVerb].base;
+            newActiveVerbs = verbsList.slice(0, minimumVerb);
+            setMessage(`Minimum ${minimumVerb} verbes`);
         } else {
             setMessage(null);
         }
@@ -31,16 +33,11 @@ const SelectVerbs = ({ activeVerbs, setActiveVerbs }: ISelectVerbs) => {
     };
 
     return (
-        <div>
-            {message && <div style={{ marginBottom: "2rem" }}>{message}</div>}
+        <div className="verbs-list-wrapper">
+            {message && <div style={{ marginBottom: '2rem' }}>{message}</div>}
             <div className="verbs-list">
                 {verbsList.map((verb) => (
-                    <DisplayVerb
-                        key={verb.base}
-                        verb={verb}
-                        endVerb={endVerb}
-                        handleAction={handleAction}
-                    />
+                    <DisplayVerb key={verb.base} verb={verb} endVerb={endVerb} handleAction={handleAction} />
                 ))}
             </div>
         </div>
@@ -55,7 +52,7 @@ interface IDisplayVerb {
 
 const DisplayVerb = ({ verb, endVerb, handleAction }: IDisplayVerb) => {
     const active = endVerb ? verb.base.localeCompare(endVerb) > 0 : false;
-    const className = active ? "verb-item" : "verb-item-active";
+    const className = active ? 'verb-item' : 'verb-item-active';
 
     const _handleClick = () => {
         handleAction(verb);

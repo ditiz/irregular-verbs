@@ -6,13 +6,13 @@ export interface IVerb {
 }
 
 export enum VerbAttribute {
-    "base" = "base",
-    "past" = "past",
-    "participle" = "participle",
-    "fr" = "fr",
+    'base' = 'base',
+    'past' = 'past',
+    'participle' = 'participle',
+    'fr' = 'fr',
 }
 
-export interface ITypeQuizz {
+export interface ITypeQuiz {
     id: string;
     name: string;
     use: boolean;
