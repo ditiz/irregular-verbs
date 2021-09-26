@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { FaAngleRight } from "react-icons/fa";
-import { IVerb } from "../types";
+import { IVerb } from "./types";
 
 interface IMessage {
-  status: "truth" | "wrong" | "ignore";
+  status: "good-answer" | "wrong" | "ignore";
   title: JSX.Element;
   next: () => void;
   verb: IVerb;
@@ -11,7 +11,7 @@ interface IMessage {
 function Message({ status, title, next, verb }: IMessage) {
   const refButton = useRef(null);
 
-  if (status === "truth") {
+  if (status === "good-answer") {
     return (
       <div className="message">
         <p>{title}</p>
@@ -52,7 +52,7 @@ function Message({ status, title, next, verb }: IMessage) {
     return (
       <div className="message">
         <p>{title}</p>
-        <div className="bad-answer">Mauvaise response</div>
+        <div className="wrong">Mauvaise response</div>
       </div>
     );
   }

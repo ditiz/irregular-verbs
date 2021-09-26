@@ -135,7 +135,7 @@ main {
   font-weight: 500;
 }
 
-.wrong {
+.bad-answer {
   height: 5rem;
   width: 30rem;
 
@@ -149,7 +149,7 @@ main {
   box-shadow: 7px 7px 15px #2b2e30, -7px -7px 15px #373c3e;
 }
 
-.truth {
+.good-answer {
   width: 30rem;
 
   display: flex;
@@ -163,7 +163,7 @@ main {
   background-color: #00bdaa;
 }
 
-.truth .message-button-wrapper {
+.good-answer .message-button-wrapper {
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -171,7 +171,7 @@ main {
   justify-content: center;
 }
 
-.truth .message-button {
+.good-answer .message-button {
   background: none;
   border: none;
   box-shadow: none;

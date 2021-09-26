@@ -38,11 +38,21 @@
     flex-flow: column;
   }
 
-  .truth {
-    width: 100%;
+  .good-answer {
+    width: 100vw;
+    border-radius: 0;
+  }
+
+  .bad-answer {
+    width: 100vw;
+    border-radius: 0;
   }
 
   .content {
     height: auto;
+  }
+
+  .message {
+    min-width: auto;
   }
 }
