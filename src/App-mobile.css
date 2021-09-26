@@ -1,46 +1,48 @@
 @media screen and (max-width: 640px) {
-    .App-header {
-        width: 100vw;
-    }
+  .menu {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    min-width: auto;
+  }
 
-    .menu {
-        display: flex;
-        flex-flow: column;
-        justify-content: flex-start;
-    }
+  .menu-items {
+    margin: 2rem auto;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    max-height: none;
+    gap: 2rem;
+  }
 
-    .menu-items {
-        margin-top: auto;
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-        max-height: none;
-    }
+  .menu-items > * {
+    margin: auto;
+  }
 
-    .multiple-choices {
-        width: 80vw;
-    }
+  .multiple-choices {
+    width: 80vw;
+  }
 
-    .verbs-list {
-        width: 80vw;
-        flex: 1;
-    }
+  .verbs-list {
+    width: 80vw;
+    flex: 1;
+  }
 
-    .go-menu {
-        position: relative;
-        left: 0;
-    }
+  .go-menu {
+    position: relative;
+    left: 0;
+  }
 
-    .choices {
-        display: flex;
-        flex-flow: column;
-    }
+  .choices {
+    display: flex;
+    flex-flow: column;
+  }
 
-    .truth {
-        width: 100%;
-    }
+  .truth {
+    width: 100%;
+  }
 
-    .content {
-        height: auto;
-    }
+  .content {
+    height: auto;
+  }
 }
