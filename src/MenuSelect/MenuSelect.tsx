@@ -84,6 +84,12 @@ const MenuSelect = ({ score, setScore, resetScore }: IMenuSelectProps) => {
 
 	return (
 		<div className="menu">
+			<button type="button" onClick={_handleClick} className="button-menu">
+				Passer au test
+			</button>
+
+			<hr />
+
 			<div className="menu-items">
 				<SelectTypeQuiz typesQuiz={typesQuiz} setTypesQuiz={setTypesQuiz} />
 
@@ -92,9 +98,6 @@ const MenuSelect = ({ score, setScore, resetScore }: IMenuSelectProps) => {
 					setActiveVerbs={setActiveVerbs}
 				/>
 			</div>
-			<button type="button" onClick={_handleClick} className="button-menu">
-				Passer au test
-			</button>
 		</div>
 	);
 };
