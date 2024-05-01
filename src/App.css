@@ -37,6 +37,12 @@ h2 {
   color: white;
 }
 
+.App-header .score {
+  display: grid;
+  gap: 2px;
+  margin: 4px;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -50,6 +56,7 @@ main {
   align-items: center;
   justify-content: flex-start;
   font-size: calc(10px + 2vmin);
+  margin: 1rem 0;
 }
 
 .content {
@@ -266,7 +273,6 @@ main {
   color: white;
   border: none;
   min-width: 10rem;
-  margin: 1rem;
   padding: 1rem;
   cursor: pointer;
 
@@ -285,6 +291,16 @@ main {
   flex-flow: column;
   justify-content: space-around;
   align-items: center;
+  gap: 1rem;
+  padding-bottom: 5rem;
+}
+
+.menu > hr {
+  width: 5rem;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 50px;
 }
 
 .multiple-choices {
@@ -324,7 +340,6 @@ main {
 }
 
 .menu-items {
-  margin: 5rem auto;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
