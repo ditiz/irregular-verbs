@@ -267,14 +267,15 @@ main {
 
 .button-menu {
   user-select: none;
-  font-size: calc(10px + 0.5vmin);
+  font-size: calc(14px + 0.5vmin);
   min-height: 3rem;
   background: none;
   color: white;
   border: none;
   min-width: 10rem;
-  padding: 1rem;
+  padding: 1.2rem;
   cursor: pointer;
+  transition: all 0.2s ease;
 
   border-radius: 50px;
   background: #2b2e30;
