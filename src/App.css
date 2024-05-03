@@ -52,11 +52,12 @@ main {
   background: rgb(58, 62, 65);
   color: white;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
   margin: 1rem 0;
+  position: relative;
 }
 
 .content {
@@ -152,7 +153,7 @@ main {
   justify-content: space-around;
 
   border-radius: 50px;
-  background: #d63447;
+  background: #ef4444;
   box-shadow: 7px 7px 15px #2b2e30, -7px -7px 15px #373c3e;
 }
 
@@ -167,7 +168,7 @@ main {
   border-radius: 50px;
   box-shadow: 7px 7px 15px #2b2e30, -7px -7px 15px #373c3e;
 
-  background-color: #00bdaa;
+  background-color: #059669;
 }
 
 .good-answer .message-button-wrapper {
@@ -261,8 +262,17 @@ main {
 }
 
 .go-menu {
-  position: absolute;
-  left: 1rem;
+  justify-self: flex-start;
+  align-self: flex-start;
+  flex: 0;
+}
+
+@media (min-width: 768px) {
+  .go-menu {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
 }
 
 .button-menu {
