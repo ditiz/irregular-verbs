@@ -105,7 +105,6 @@ main {
 
 .message {
   flex: 2;
-  min-width: 30rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,6 +121,7 @@ main {
   flex-flow: column nowrap;
   align-items: flex-start;
   justify-content: space-between;
+  padding: 1rem;
 }
 
 .message-response {
@@ -141,6 +141,7 @@ main {
 .message-response span {
   margin-left: 3px;
   font-weight: 500;
+  text-align: left;
 }
 
 .bad-answer {
