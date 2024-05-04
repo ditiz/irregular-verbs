@@ -24,7 +24,6 @@
   }
 
   .verbs-list {
-    width: 80vw;
     flex: 1;
   }
 
@@ -40,12 +39,10 @@
 
   .good-answer {
     width: 100vw;
-    border-radius: 0;
   }
 
   .bad-answer {
     width: 100vw;
-    border-radius: 0;
   }
 
   .content {
