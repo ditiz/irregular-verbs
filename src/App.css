@@ -157,8 +157,6 @@ main {
 }
 
 .good-answer {
-  width: 30rem;
-
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -423,7 +421,8 @@ main {
     grid-gap: 1rem;
   }
 
-  .good-answer {
+  .good-answer, .bad-answer {
     width: 30rem;
+    border-radius: 50px;
   }
 }
