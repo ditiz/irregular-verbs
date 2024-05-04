@@ -38,14 +38,16 @@ const SelectVerbs = ({ activeVerbs, setActiveVerbs }: ISelectVerbs) => {
 		<div className="verbs-list-wrapper">
 			{message && <div style={{ marginBottom: "2rem" }}>{message}</div>}
 			<div className="verbs-list">
-				{verbsList.map((verb) => (
-					<DisplayVerb
-						key={verb.base}
-						verb={verb}
-						endVerb={endVerb}
-						handleAction={handleAction}
-					/>
-				))}
+				<div className="verbs-list-inner">
+					{verbsList.map((verb) => (
+						<DisplayVerb
+							key={verb.base}
+							verb={verb}
+							endVerb={endVerb}
+							handleAction={handleAction}
+						/>
+					))}
+				</div>
 			</div>
 		</div>
 	);
